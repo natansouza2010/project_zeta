@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:project_zeta/core/constants/app_theme.dart';
 import 'package:project_zeta/core/valorant/infra/model/agent_model.dart';
 
@@ -16,6 +17,7 @@ class CardAgent extends StatelessWidget {
       color: const Color(0xFF0F1923),
       child: InkWell(
           onTap: () {
+            Modular.to.pushNamed('/home/agents/details/100');
             // Navigator.push(context, CupertinoPageRoute(
             //   builder: (context) => AgentDetailPage(agent: agent))
             // );
