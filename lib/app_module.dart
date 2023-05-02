@@ -1,5 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:project_zeta/core/valorant/presentation/agents_module.dart';
+import 'package:project_zeta/core/valorant/presentation/home_module.dart';
 
 class AppModule extends Module {
   @override
@@ -7,7 +7,7 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        RedirectRoute('/', to: '/agents/'),
-        ModuleRoute('/agents/', module: AgentsModule()),
+        RedirectRoute('/', to: '/home/agents'),
+        ModuleRoute('/home/', module: HomeModule()),
       ];
 }

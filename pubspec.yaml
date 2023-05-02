@@ -60,6 +60,9 @@ flutter:
     - family: DrukWide
       fonts:
         - asset: fonts/Druk-Wide-Bold.ttf
+    - family: Valorant
+      fonts:
+        - asset: fonts/Valorant-Font.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
