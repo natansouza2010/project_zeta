@@ -91,20 +91,15 @@ class _DetailsAgentsPageState extends State<DetailsAgentsPage> {
             body: SingleChildScrollView(
                 physics: const ClampingScrollPhysics(),
                 child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
+                  decoration: const BoxDecoration(
+                      color: black,
                       shape: BoxShape.rectangle,
-                    ),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                          color: black,
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(24),
-                              topRight: Radius.circular(24))),
-                      margin: const EdgeInsets.all(0),
-                      child: _buildBody(),
-                    )))));
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24))),
+                  margin: const EdgeInsets.all(0),
+                  child: _buildBody(),
+                ))));
   }
 
   Widget _buildBody() {
