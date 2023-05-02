@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:project_zeta/core/valorant/model/agent_model.dart';
+import 'package:project_zeta/core/valorant/infra/model/agent_model.dart';
 import 'package:project_zeta/core/valorant/presentation/pages/widgets/card_agent.dart';
+import 'package:project_zeta/core/valorant/presentation/pages/widgets/drawer_default.dart';
 
 const List<String> images = [
   "assets/jett.png",
@@ -14,6 +15,8 @@ class AgentsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final agent = AgentModel(uuid: "1", displayName: "JETT");
     return Scaffold(
+        appBar: AppBar(),
+        drawer: const DrawerDefault(),
         body: Swiper(
             itemCount: images.length,
             itemBuilder: (BuildContext context, int index) {

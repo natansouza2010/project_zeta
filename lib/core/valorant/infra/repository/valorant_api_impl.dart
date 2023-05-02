@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:project_zeta/core/model/agent.dart';
-import 'package:project_zeta/core/repository/valorant_api_contract.dart';
+import 'package:project_zeta/core/valorant/infra/repository/valorant_api_contract.dart';
+import 'package:project_zeta/core/valorant/infra/model/agent_model.dart';
 
 class ValorantApiImpl implements ValorantApiContract {
   final dio = Dio();
 
   @override
-  Future<List<Agent>> getAgents() async {
+  Future<List<AgentModel>> getAgents() async {
     final agentsResponse = await dio.get('https://valorant-api.com/v1/agents');
     final response = agentsResponse.data as List;
-    final agents = response.map((e) => Agent.fromMap(e)).toList();
+    final agents = response.map((e) => AgentModel.fromMap(e)).toList();
     return agents;
   }
 

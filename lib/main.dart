@@ -1,22 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_zeta/core/valorant/presentation/pages/agents_page.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:project_zeta/app_module.dart';
+import 'package:project_zeta/app_widget.dart';
 
 void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AgentsPage(),
-    );
-  }
+  runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }

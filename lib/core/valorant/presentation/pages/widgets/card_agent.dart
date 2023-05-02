@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_zeta/core/valorant/model/agent_model.dart';
+import 'package:project_zeta/core/valorant/infra/model/agent_model.dart';
 
 class CardAgent extends StatelessWidget {
   final AgentModel agentModel;
