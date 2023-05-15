@@ -7,10 +7,16 @@ class ValorantApiImpl implements ValorantApiContract {
 
   @override
   Future<List<AgentModel>> getAgents() async {
-    final agentsResponse = await dio.get('https://valorant-api.com/v1/agents');
-    final response = agentsResponse.data as List;
-    final agents = response.map((e) => AgentModel.fromMap(e)).toList();
-    return agents;
+    try {
+      final dio = Dio();
+      final response = await dio.get('https://valorant-api.com/v1/agents');
+      final data = response.data['data'] as List<dynamic>;
+      final agents = data.map((item) => AgentModel.fromMap(item)).toList();
+      return agents;
+    } catch (error) {
+      print('Erro na solicitação: $error');
+      return [];
+    }
   }
 
   @override
@@ -23,5 +29,20 @@ class ValorantApiImpl implements ValorantApiContract {
   Future<Map<String, dynamic>> getWeapons() async {
     // TODO: implement getWeapons
     throw UnimplementedError();
+  }
+
+  @override
+  Future<AgentModel> getAgentById(String uuid) async {
+    try {
+      final dio = Dio();
+      final response =
+          await dio.get('https://valorant-api.com/v1/agents/$uuid');
+      final data = response.data['data'] as Map<String, dynamic>;
+
+      return AgentModel.fromMap(data);
+    } catch (error) {
+      print('Erro na solicitação: $error');
+      return AgentModel(uuid: "null", displayName: "null");
+    }
   }
 }

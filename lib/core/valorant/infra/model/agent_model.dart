@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:project_zeta/core/valorant/infra/model/abilities_model.dart';
+
 class AgentModel {
   final String uuid;
   final String displayName;
@@ -11,6 +13,8 @@ class AgentModel {
   final String? fullPortrait;
   final String? fullPortraitV2;
   final String? background;
+  final String? developerName;
+  final List<AbilitiesModel>? abilities;
 
   AgentModel({
     required this.uuid,
@@ -22,6 +26,8 @@ class AgentModel {
     this.fullPortrait,
     this.fullPortraitV2,
     this.background,
+    this.developerName,
+    this.abilities,
   });
 
   AgentModel copyWith({
@@ -34,6 +40,8 @@ class AgentModel {
     String? fullPortrait,
     String? fullPortraitV2,
     String? background,
+    String? developerName,
+    List<AbilitiesModel>? abilities,
   }) {
     return AgentModel(
       uuid: uuid ?? this.uuid,
@@ -45,6 +53,8 @@ class AgentModel {
       fullPortrait: fullPortrait ?? this.fullPortrait,
       fullPortraitV2: fullPortraitV2 ?? this.fullPortraitV2,
       background: background ?? this.background,
+      developerName: developerName ?? this.developerName,
+      abilities: abilities ?? this.abilities,
     );
   }
 
@@ -59,30 +69,39 @@ class AgentModel {
       'fullPortrait': fullPortrait,
       'fullPortraitV2': fullPortraitV2,
       'background': background,
+      'developerName': developerName,
+      'abilities': abilities,
     };
   }
 
   factory AgentModel.fromMap(Map<String, dynamic> map) {
     return AgentModel(
-      uuid: map['uuid'] as String,
-      displayName: map['displayName'] as String,
-      description:
-          map['description'] != null ? map['description'] as String : null,
-      displayIcon:
-          map['displayIcon'] != null ? map['displayIcon'] as String : null,
-      displayIconSmall: map['displayIconSmall'] != null
-          ? map['displayIconSmall'] as String
-          : null,
-      bustPortrait:
-          map['bustPortrait'] != null ? map['bustPortrait'] as String : null,
-      fullPortrait:
-          map['fullPortrait'] != null ? map['fullPortrait'] as String : null,
-      fullPortraitV2: map['fullPortraitV2'] != null
-          ? map['fullPortraitV2'] as String
-          : null,
-      background:
-          map['background'] != null ? map['background'] as String : null,
-    );
+        uuid: map['uuid'] as String,
+        displayName: map['displayName'] as String,
+        description:
+            map['description'] != null ? map['description'] as String : null,
+        displayIcon:
+            map['displayIcon'] != null ? map['displayIcon'] as String : null,
+        displayIconSmall: map['displayIconSmall'] != null
+            ? map['displayIconSmall'] as String
+            : null,
+        bustPortrait:
+            map['bustPortrait'] != null ? map['bustPortrait'] as String : null,
+        fullPortrait:
+            map['fullPortrait'] != null ? map['fullPortrait'] as String : null,
+        fullPortraitV2: map['fullPortraitV2'] != null
+            ? map['fullPortraitV2'] as String
+            : null,
+        background:
+            map['background'] != null ? map['background'] as String : null,
+        developerName: map['developerName'] != null
+            ? map['developerName'] as String
+            : null,
+        abilities: map['abilities'] != null
+            ? (map['abilities'] as List<dynamic>)
+                .map((e) => AbilitiesModel.fromMap(e))
+                .toList()
+            : null);
   }
 
   String toJson() => json.encode(toMap());
@@ -92,7 +111,7 @@ class AgentModel {
 
   @override
   String toString() {
-    return 'AgentModel(uuid: $uuid, displayName: $displayName, description: $description, displayIcon: $displayIcon, displayIconSmall: $displayIconSmall, bustPortrait: $bustPortrait, fullPortrait: $fullPortrait, fullPortraitV2: $fullPortraitV2, background: $background)';
+    return 'AgentModel(uuid: $uuid, displayName: $displayName, description: $description, displayIcon: $displayIcon, displayIconSmall: $displayIconSmall, bustPortrait: $bustPortrait, fullPortrait: $fullPortrait, fullPortraitV2: $fullPortraitV2, background: $background, developerName: $developerName)';
   }
 
   @override

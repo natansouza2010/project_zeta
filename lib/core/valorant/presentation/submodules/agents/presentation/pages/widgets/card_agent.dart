@@ -17,24 +17,25 @@ class CardAgent extends StatelessWidget {
       color: const Color(0xFF0F1923),
       child: InkWell(
           onTap: () {
-            Modular.to.pushNamed('/home/agents/details/100');
+            Modular.to.pushNamed('/home/agents/details/${agentModel.uuid}');
             // Navigator.push(context, CupertinoPageRoute(
             //   builder: (context) => AgentDetailPage(agent: agent))
             // );
           },
           child: Ink(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/jett.png'),
+                      image: NetworkImage(agentModel.fullPortrait ?? ''),
                       fit: BoxFit.fitHeight)),
               padding: const EdgeInsets.all(12),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Teste",
-                        style: TextStyle(color: Colors.white70, fontSize: 18)),
-                    Text("JETT".toString().toUpperCase(),
+                    Text(agentModel.developerName.toString(),
+                        style: const TextStyle(
+                            color: Colors.white70, fontSize: 18)),
+                    Text(agentModel.displayName.toString().toUpperCase(),
                         style: const TextStyle(
                             color: white2,
                             fontSize: 36,
