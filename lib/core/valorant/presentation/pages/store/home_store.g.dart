@@ -24,6 +24,38 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$usernameAtom =
+      Atom(name: 'HomeStoreBase.username', context: context);
+
+  @override
+  String get username {
+    _$usernameAtom.reportRead();
+    return super.username;
+  }
+
+  @override
+  set username(String value) {
+    _$usernameAtom.reportWrite(value, super.username, () {
+      super.username = value;
+    });
+  }
+
+  late final _$taglineAtom =
+      Atom(name: 'HomeStoreBase.tagline', context: context);
+
+  @override
+  String get tagline {
+    _$taglineAtom.reportRead();
+    return super.tagline;
+  }
+
+  @override
+  set tagline(String value) {
+    _$taglineAtom.reportWrite(value, super.tagline, () {
+      super.tagline = value;
+    });
+  }
+
   late final _$detailStateAtom =
       Atom(name: 'HomeStoreBase.detailState', context: context);
 
@@ -40,12 +72,52 @@ mixin _$HomeStore on HomeStoreBase, Store {
     });
   }
 
+  late final _$stateStatsAtom =
+      Atom(name: 'HomeStoreBase.stateStats', context: context);
+
+  @override
+  StatsState get stateStats {
+    _$stateStatsAtom.reportRead();
+    return super.stateStats;
+  }
+
+  @override
+  set stateStats(StatsState value) {
+    _$stateStatsAtom.reportWrite(value, super.stateStats, () {
+      super.stateStats = value;
+    });
+  }
+
+  late final _$setUsernameAsyncAction =
+      AsyncAction('HomeStoreBase.setUsername', context: context);
+
+  @override
+  Future<void> setUsername(String username) {
+    return _$setUsernameAsyncAction.run(() => super.setUsername(username));
+  }
+
+  late final _$setTaglineAsyncAction =
+      AsyncAction('HomeStoreBase.setTagline', context: context);
+
+  @override
+  Future<void> setTagline(String tagline) {
+    return _$setTaglineAsyncAction.run(() => super.setTagline(tagline));
+  }
+
   late final _$setStateAsyncAction =
       AsyncAction('HomeStoreBase.setState', context: context);
 
   @override
   Future<void> setState(ValorantState newState) {
     return _$setStateAsyncAction.run(() => super.setState(newState));
+  }
+
+  late final _$setStatsStateAsyncAction =
+      AsyncAction('HomeStoreBase.setStatsState', context: context);
+
+  @override
+  Future<void> setStatsState(StatsState newState) {
+    return _$setStatsStateAsyncAction.run(() => super.setStatsState(newState));
   }
 
   late final _$setDetailStateAsyncAction =
@@ -61,7 +133,10 @@ mixin _$HomeStore on HomeStoreBase, Store {
   String toString() {
     return '''
 state: ${state},
-detailState: ${detailState}
+username: ${username},
+tagline: ${tagline},
+detailState: ${detailState},
+stateStats: ${stateStats}
     ''';
   }
 }

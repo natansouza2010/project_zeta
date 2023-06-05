@@ -10,6 +10,6 @@ import 'package:project_zeta/core/valorant/infra/repository/valorant_api_impl.da
 void main() async {
   final vava = ValorantApiImpl();
 
-  final r = await vava.getAgents();
+  final r = await vava.getStats(username: "Meyer ツ", tagline: "easy");
   print(r);
 }

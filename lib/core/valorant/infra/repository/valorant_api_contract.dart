@@ -5,4 +5,6 @@ abstract class ValorantApiContract {
   Future<AgentModel> getAgentById(String uuid);
   Future<Map<String, dynamic>> getAgentsByUuid(String uuid);
   Future<Map<String, dynamic>> getWeapons();
+  Future<Map<String, dynamic>> getStats(
+      {required String username, required String tagline});
 }

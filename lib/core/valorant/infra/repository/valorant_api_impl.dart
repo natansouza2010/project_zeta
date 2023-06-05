@@ -45,4 +45,20 @@ class ValorantApiImpl implements ValorantApiContract {
       return AgentModel(uuid: "null", displayName: "null");
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getStats(
+      {required String username, required String tagline}) async {
+    try {
+      final dio = Dio();
+      final response = await dio.get(
+          'https://api.henrikdev.xyz/valorant/v1/mmr/na/$username/$tagline');
+      final data = response.data['data'] as Map<String, dynamic>;
+
+      return data;
+    } catch (error) {
+      print('Erro na solicitação: $error');
+      return {};
+    }
+  }
 }

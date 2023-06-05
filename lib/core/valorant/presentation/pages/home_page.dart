@@ -59,6 +59,10 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.storage),
                   label: "Weapons",
                 ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.event_note),
+                  label: "Stats",
+                ),
               ]);
         }));
   }
@@ -70,5 +74,8 @@ void _onClickNavigation(int value) {
   }
   if (value == 1) {
     Modular.to.navigate('./weapons');
+  }
+  if (value == 2) {
+    Modular.to.navigate('./stats');
   }
 }
